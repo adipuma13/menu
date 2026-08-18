@@ -2,10 +2,37 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Мой первый сайт</title>
+  <title>Майка с рисунком</title>
+  <style>
+    #tshirt {
+      position: relative;
+      width: 300px;
+    }
+    #design {
+      position: absolute;
+      top: 80px;
+      left: 60px;
+      width: 180px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Привет, мир!</h1>
-  <p>Это мой первый сайт на GitHub Pages 🚀</p>
+  <h1>Выбери рисунок для майки</h1>
+  <input type="file" id="upload" accept="image/*">
+  <div id="tshirt">
+    <img src="tshirt.png" alt="Майка" width="300">
+    <img id="design" src="" alt="Рисунок">
+  </div>
+
+  <script>
+    const upload = document.getElementById('upload');
+    const design = document.getElementById('design');
+    upload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        design.src = URL.createObjectURL(file);
+      }
+    });
+  </script>
 </body>
 </html>
